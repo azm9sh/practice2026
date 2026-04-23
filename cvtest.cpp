@@ -8,5 +8,5 @@ int main() {
 
   cv::imshow("loaded image", image);
 
-  cv::waitkey(0);
+  cv::waitKey(0);
 }

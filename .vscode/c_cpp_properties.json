@@ -4,6 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
+                "C:/tools/msys64/clang/include/opencv4",
                 "C:/tools/msys64/clang64/include/opencv4"
             ],
             "defines": [
