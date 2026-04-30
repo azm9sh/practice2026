@@ -20,9 +20,10 @@ int main() {
       int G = pixel[i * stride + j * nc + 1];
       int R = pixel[i * stride + j * nc + 2];
 
-      pixel[i * stride + j * nc + 0] = cv::saturate_cast<uchar>(B * 0.5);
-      pixel[i * stride + j * nc + 1] = cv::saturate_cast<uchar>(G * 0.5);
-      pixel[i * stride + j * nc + 2] = cv::saturate_cast<uchar>(R * 0.5);
+      // ミニ課題1自作
+      pixel[i * stride + j * nc + 0] = cv::saturate_cast<uchar>(B * 2);
+      pixel[i * stride + j * nc + 1] = cv::saturate_cast<uchar>(G * 2);
+      pixel[i * stride + j * nc + 2] = cv::saturate_cast<uchar>(R * 2);
     }
   }
   cv::imshow("loaded image", image);

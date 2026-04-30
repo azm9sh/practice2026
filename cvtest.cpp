@@ -29,13 +29,14 @@ int main() {
       int G = pixel[i * stride + j * nc + 1];
       int R = pixel[i * stride + j * nc + 2];
 
-      pixel[i * stride + j * nc + 0] = clamp(B * 4);
-      pixel[i * stride + j * nc + 1] = clamp(G * 4);
-      pixel[i * stride + j * nc + 2] = clamp(R * 4);
+      pixel[i * stride + j * nc + 0] = clamp(B * 0.5);
+      pixel[i * stride + j * nc + 1] = clamp(G * 0.5);
+      pixel[i * stride + j * nc + 2] = clamp(R * 0.5);
     }
   }
   cv::imshow("loaded image", image);
 
   cv::waitKey(0);
+  cv::destroyAllWindows();
   return EXIT_SUCCESS;
 }
