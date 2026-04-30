@@ -14,24 +14,15 @@ int main() {
   std::cout << "height = " << height << std::endl;
 
   auto pixel = image.data;
-
-  // ラムダ式
-  auto clamp = [](int val) {
-    if (val > 255) {
-      val = 0;
-    }
-    return val;
-  };
-
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
       int B = pixel[i * stride + j * nc + 0];
       int G = pixel[i * stride + j * nc + 1];
       int R = pixel[i * stride + j * nc + 2];
 
-      pixel[i * stride + j * nc + 0] = clamp(B * 4);
-      pixel[i * stride + j * nc + 1] = clamp(G * 4);
-      pixel[i * stride + j * nc + 2] = clamp(R * 4);
+      pixel[i * stride + j * nc + 0] = cv::saturate_cast<uchar>(B * 0.5);
+      pixel[i * stride + j * nc + 1] = cv::saturate_cast<uchar>(G * 0.5);
+      pixel[i * stride + j * nc + 2] = cv::saturate_cast<uchar>(R * 0.5);
     }
   }
   cv::imshow("loaded image", image);
