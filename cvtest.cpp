@@ -1,6 +1,16 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+auto clamp = [](int val) {
+  if (val > 255) {
+    val = 255;
+  }
+  if (val < 0) {
+    val = 0;
+  }
+  return val;
+};
+
 cv::Mat rgb2ycbcr(cv::Mat img) {
   // RGB -> YCbCr, imgはshallowコピーなのでOK
   const int width = img.cols;
@@ -23,9 +33,9 @@ cv::Mat rgb2ycbcr(cv::Mat img) {
       Cb += 128;
       Cr += 128;
 
-      pixel[i * stride + j * nc + 0] = Y;
-      pixel[i * stride + j * nc + 1] = Cr;
-      pixel[i * stride + j * nc + 2] = Cb;
+      pixel[i * stride + j * nc + 0] = clamp(Y);
+      pixel[i * stride + j * nc + 1] = clamp(Cr);
+      pixel[i * stride + j * nc + 2] = clamp(Cb);
     }
   }
   return img;
